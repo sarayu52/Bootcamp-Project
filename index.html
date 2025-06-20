@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Simple Static Web Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+      background: #f0f0f0;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="message">Hello, welcome to my static page!</h1>
+  <button onclick="changeMessage()">Click Me</button>
+
+  <script>
+    function changeMessage() {
+      const message = document.getElementById('message');
+      message.textContent = 'You clicked the button! 🎉';
+    }
+  </script>
+</body>
+</html>
