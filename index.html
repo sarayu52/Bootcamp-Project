@@ -2,43 +2,114 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Simple Static Web Page</title>
+  <title>Movie Reviews with Images & Links</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      text-align: center;
-      margin-top: 100px;
-      background: #f0f0f0;
+      background: #f0f2f5;
+      padding: 20px;
     }
 
     h1 {
+      text-align: center;
       color: #333;
     }
 
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      background: #007BFF;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
+    .movie {
+      background: #fff;
+      border-radius: 8px;
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: left;
     }
 
-    button:hover {
-      background: #0056b3;
+    .movie img {
+      max-width: 100%;
+      border-radius: 5px;
+    }
+
+    .movie h2 {
+      margin-top: 15px;
+      color: #007BFF;
+    }
+
+    .movie p {
+      color: #555;
+    }
+
+    .movie a {
+      display: inline-block;
+      margin-top: 10px;
+      background: #28a745;
+      color: #fff;
+      text-decoration: none;
+      padding: 8px 15px;
+      border-radius: 4px;
+    }
+
+    .movie a:hover {
+      background: #218838;
     }
   </style>
 </head>
 <body>
-  <h1 id="message">Hello, welcome to my static page!</h1>
-  <button onclick="changeMessage()">Click Me</button>
+  <h1>Movie Reviews with Images & Links</h1>
+  <div id="movie-list"></div>
 
   <script>
-    function changeMessage() {
-      const message = document.getElementById('message');
-      message.textContent = 'You clicked the button! 🎉';
-    }
+    // JSON data with images and links
+    const movies = [
+      {
+        "title": "The Shawshank Redemption",
+        "review": "A timeless story about hope and friendship. Must watch!",
+        "image": "https://m.media-amazon.com/images/I/81aA7hEEykL._AC_SY679_.jpg",
+        "link": "https://www.imdb.com/title/tt0111161/"
+      },
+      {
+        "title": "Inception",
+        "review": "A mind-bending thriller with stunning visuals and plot twists.",
+        "image": "https://m.media-amazon.com/images/I/51xJb2w9B2L._AC_.jpg",
+        "link": "https://www.imdb.com/title/tt1375666/"
+      },
+      {
+        "title": "Interstellar",
+        "review": "A beautiful sci-fi epic exploring space, time, and love.",
+        "image": "https://m.media-amazon.com/images/I/71y7sAP7ZSL._AC_SY679_.jpg",
+        "link": "https://www.imdb.com/title/tt0816692/"
+      }
+    ];
+
+    // Display movies
+    const movieList = document.getElementById('movie-list');
+
+    movies.forEach(movie => {
+      const movieDiv = document.createElement('div');
+      movieDiv.className = 'movie';
+
+      const image = document.createElement('img');
+      image.src = movie.image;
+      image.alt = movie.title;
+
+      const title = document.createElement('h2');
+      title.textContent = movie.title;
+
+      const review = document.createElement('p');
+      review.textContent = movie.review;
+
+      const link = document.createElement('a');
+      link.href = movie.link;
+      link.target = "_blank";
+      link.textContent = "More Info";
+
+      movieDiv.appendChild(image);
+      movieDiv.appendChild(title);
+      movieDiv.appendChild(review);
+      movieDiv.appendChild(link);
+
+      movieList.appendChild(movieDiv);
+    });
   </script>
 </body>
 </html>
